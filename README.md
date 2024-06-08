@@ -9,6 +9,7 @@
 ---
 
 ## Usage
+
 The easiest way to use [GitInfo.cmake](https://github.com/cppmf/GitInfo.cmake) is by adding [GetCPM.cmake](https://github.com/cppmf/GetCPM.cmake) to your project.
 
 First add GetCPM.cmake module :
@@ -19,7 +20,6 @@ wget -O cmake/GetCPM.cmake https://raw.githubusercontent.com/cppmf/GetCPM.cmake/
 ```
 
 Then add the following lines to the project's `CMakeLists.txt`.
-
 
 ```bash
 # include CPM.cmake module
@@ -40,22 +40,22 @@ GitInfo(${CMAKE_CURRENT_SOURCE_DIR})
 
 After calling GitInfo function, the following variables will be set
 
-variable | description
----------|------------
-GIT_DIR | path to the project .git directory
-GIT_IS_DIRTY | whether or not the working tree is dirty
-GIT_HEAD_BRANCH | name of the branch associated to HEAD
-GIT_REVISION_HASH | current HEAD sha hash
-GIT_REVISION | shorten version of GIT_REVISION_HASH
-GIT_REVISION_NAME | name associated to GIT_REVISION_HASH
-GIT_AUTHOR_NAME | author name
-GIT_AUTHOR_EMAIL | author email
-GIT_AUTHOR_DATE | author date
-GIT_AUTHOR_DATE_ISO | author date, strict ISO 8601 format
-GIT_COMMITTER_NAME | committer name
-GIT_COMMITTER_EMAIL | committer email
-GIT_COMMITTER_DATE | committer date
-GIT_COMMITTER_DATE_ISO | committer date, strict ISO 8601 format
-GIT_REMOTE_ORIGIN_URL | origin remote url
-GIT_LATEST_TAG_LONG | most recent tag of the current branch
-GIT_LATEST_TAG | most recent tagname of the current branch
+| variable               | description                               |
+| ---------------------- | ----------------------------------------- |
+| GIT_DIR                | path to the project .git directory        |
+| GIT_IS_DIRTY           | whether or not the working tree is dirty  |
+| GIT_HEAD_BRANCH        | name of the branch associated with HEAD   |
+| GIT_REVISION_HASH      | current HEAD sha hash                     |
+| GIT_REVISION           | short version of GIT_REVISION_HASH        |
+| GIT_REVISION_NAME      | name associated to GIT_REVISION_HASH      |
+| GIT_AUTHOR_NAME        | author name                               |
+| GIT_AUTHOR_EMAIL       | author email                              |
+| GIT_AUTHOR_DATE        | author date                               |
+| GIT_AUTHOR_DATE_ISO    | author date, strict ISO 8601 format       |
+| GIT_COMMITTER_NAME     | committer name                            |
+| GIT_COMMITTER_EMAIL    | committer email                           |
+| GIT_COMMITTER_DATE     | committer date                            |
+| GIT_COMMITTER_DATE_ISO | committer date, strict ISO 8601 format    |
+| GIT_REMOTE_ORIGIN_URL  | origin remote url                         |
+| GIT_LATEST_TAG_LONG    | most recent tag of the current branch     |
+| GIT_LATEST_TAG         | most recent tagname of the current branch |

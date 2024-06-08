@@ -1,19 +1,20 @@
 # ---------------------------------------------------------------------------- #
 #
 # Copyright (c) 2020 C++ Modern Framework
+# https://github.com/cppmf/GitInfo.cmake
 #
 # ---------------------------------------------------------------------------- #
 
 # ---------------------------------------------------------------------------- #
 #
-# Following variables will be set when calling GitInfo
+# The following variables will be set when calling GitInfo
 #
 #   GIT_DIR: path to the project .git directory
 #   GIT_IS_DIRTY: whether or not the working tree is dirty
-#   GIT_HEAD_BRANCH : name of the branch associated te HEAD
+#   GIT_HEAD_BRANCH : name of the branch associated with HEAD
 #   GIT_REVISION_HASH: current HEAD sha hash
-#   GIT_REVISION: shorten version of GIT_REVISION_HASH
-#   GIT_REVISION_NAME: name associated to GIT_REVISION_HASH
+#   GIT_REVISION: short version of GIT_REVISION_HASH
+#   GIT_REVISION_NAME: name associated with GIT_REVISION_HASH
 #   GIT_AUTHOR_NAME : author name
 #   GIT_AUTHOR_EMAIL : author email
 #   GIT_AUTHOR_DATE : author date
@@ -32,7 +33,7 @@
 # source should point to the root project directory
 function(GitInfo source)
 
-  # Check is source is a valid path
+  # Check if source is a valid path
   if(NOT EXISTS ${source})
     message(FATAL_ERROR "'${source}' is not a valid path")
   endif()
@@ -43,7 +44,6 @@ function(GitInfo source)
   # Check if .git folder exist
   if(EXISTS ${GIT_DIR})
 
-    #
     set(GIT_DIR "${GIT_DIR}" CACHE PATH "Project .git directory")
 
     # Check if git is installed
@@ -70,11 +70,11 @@ function(GitInfo source)
       set(GIT_IS_DIRTY OFF CACHE BOOL "Indicate if current branch is dirty")
     endif()
 
-    # name of the brack associated te HEAD
+    # name of the branch associated with HEAD
     execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --abbrev-ref HEAD
             WORKING_DIRECTORY ${source}
             OUTPUT_VARIABLE GIT_HEAD_BRANCH OUTPUT_STRIP_TRAILING_WHITESPACE)
-    set(GIT_HEAD_BRANCH "${GIT_HEAD_BRANCH}" CACHE INTERNAL "name of the brack associated te HEAD")
+    set(GIT_HEAD_BRANCH "${GIT_HEAD_BRANCH}" CACHE INTERNAL "name of the branch associated with HEAD")
 
     # git revision full hash
     execute_process(COMMAND ${GIT_EXECUTABLE} show -s "--format=%H" HEAD
@@ -82,17 +82,17 @@ function(GitInfo source)
             OUTPUT_VARIABLE GIT_REVISION_HASH OUTPUT_STRIP_TRAILING_WHITESPACE)
     set(GIT_REVISION_HASH "${GIT_REVISION_HASH}" CACHE INTERNAL "git revision full hash")
 
-    # shorten version of git revision
+    # short version of git revision
     execute_process(COMMAND ${GIT_EXECUTABLE} show -s "--format=%h" HEAD
             WORKING_DIRECTORY ${source}
             OUTPUT_VARIABLE GIT_REVISION OUTPUT_STRIP_TRAILING_WHITESPACE)
-    set(GIT_REVISION "${GIT_REVISION}" CACHE INTERNAL "shorten version of git revision")
+    set(GIT_REVISION "${GIT_REVISION}" CACHE INTERNAL "short version of git revision")
 
-    # shorten version of git revision name
+    # short version of git revision name
     execute_process(COMMAND ${GIT_EXECUTABLE} show -s "--format=%s" HEAD
             WORKING_DIRECTORY ${source}
             OUTPUT_VARIABLE GIT_REVISION_NAME OUTPUT_STRIP_TRAILING_WHITESPACE)
-    set(GIT_REVISION_NAME "${GIT_REVISION_NAME}" CACHE INTERNAL "shorten version of git revision name")
+    set(GIT_REVISION_NAME "${GIT_REVISION_NAME}" CACHE INTERNAL "short version of git revision name")
 
     # author name
     execute_process(COMMAND ${GIT_EXECUTABLE} show -s "--format=%an" HEAD
